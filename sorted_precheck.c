@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 11:32:08 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/05 13:45:24 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/06 10:54:23 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,14 @@ int	last_sorted_back(t_stacks *stacks)
 			break ;
 	}
 	return (index + 1);
+}
+
+void	sorted_precheck(t_stacks *stacks)
+{
+	stacks->front = last_sorted_front(stacks) + 1;
+	stacks->back = last_sorted_back(stacks) - 1;
+	if (stacks->front >= stacks->arr[0] - stacks->back + 1)
+		stacks->back = stacks->arr[0];
+	else
+		stacks->front = 1;
 }
