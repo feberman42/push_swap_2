@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:09:07 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/05 13:42:42 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/06 11:51:54 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	get_index(int *arr, int value)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (arr[i] != value)
 		i++;
 	return (i);
