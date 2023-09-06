@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:32:19 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/06 10:37:00 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:22:33 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,13 @@ long int		*create_ignore(void);
 void			rotate_to(t_stacks *stacks, t_stack stack, int value);
 int				last_sorted_front(t_stacks *stacks);
 int				last_sorted_back(t_stacks *stacks);
+void			sorted_precheck(t_stacks *stacks);
 long int		*search_beam(t_stacks *stacks, t_stack stack);
 void			process_beam(long int *beam, t_stacks *stacks, t_stack stack);
-int				find_insetion_point(t_stacks *stacks);
+int				find_insertion_point(t_stacks *stacks);
 void			final_push(t_stacks *stacks);
-int				sort(t_stacks *stacks);
-
+int				presort(t_stacks *stacks);
+int				sort(t_stacks *stacks, int back);
 void			*free_split(char **split, int size);
 void			free_list(t_node **node);
 void			free_stacks(t_stacks *stacks);
