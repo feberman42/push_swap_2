@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 10:33:20 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/06 10:29:23 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:32:16 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	search_in_stack(t_node **stack, int value)
 		return (-1 * rr);
 }
 
-int	find_insetion_point(t_stacks *stacks)
+int	find_insertion_point(t_stacks *stacks)
 {
 	int		i;
 	t_node	*trv;
