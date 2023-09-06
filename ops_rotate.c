@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 18:44:50 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/06 10:35:59 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:31:38 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,18 @@ void	rotate_to(t_stacks *stacks, t_stack stack, int value)
 		moves = search_in_stack(stacks->b, value);
 	if (moves >= 0)
 		while (moves-- > 0)
-			ops_ra(stacks);
+		{
+			if (stack == A)
+				ops_ra(stacks);
+			else
+				ops_rb(stacks);
+		}
 	else
 		while (moves++ < 0)
-			ops_rra(stacks);
+		{
+			if (stack == A)
+				ops_rra(stacks);
+			else
+				ops_rrb(stacks);
+		}
 }
