@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:36:32 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/07 10:04:00 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:35:36 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,36 @@ int	main(int argc, char *argv[])
 
 int	presort(t_stacks *stacks)
 {
-	int	section_size;
-	int	sort_n;
-	int	section_border;
-	int	value_index;
-	int	pushed;
+	int		section_size;
+	int		center;
+	int		value_index;
+	int		i;
+	t_node	*check;
 
-	sort_n = (stacks->back - stacks->front) + 1;
-	section_size = (sort_n / 32) + 1;
-	while (stacks->front <= stacks->back)
+	section_size = (((stacks->back - stacks->front) + 1) / ((stacks->arr[0] / 40) + 4)) + 1;
+	center = ((stacks->back - stacks->front) / 2) + stacks->front;
+	i = 1;
+	while (center + ((i - 1) * section_size) <= stacks->back || center - ((i - 1) * section_size) >= stacks->front)
 	{
-		section_border = stacks->back - section_size;
-		if (section_border < stacks->front)
-			section_border = stacks->front;
-		pushed = 0;
-		while (pushed < (stacks->back - section_border + 1))
+		check = 0;
+		while (check != *(stacks->a))
 		{
 			value_index = get_index(stacks->arr, (*(stacks->a))->value);
-			if (value_index <= stacks->back && value_index >= section_border)
+			if (value_index <= center && value_index >= center - (i * section_size) && value_index >= stacks->front)
+				ops_pb(stacks);
+			else if (value_index > center && value_index <= center + (i * section_size) && value_index <= stacks->back)
 			{
 				ops_pb(stacks);
-				pushed++;
+				ops_rb(stacks);
 			}
 			else
+			{
+				if (!check)
+					check = *(stacks->a);
 				ops_ra(stacks);
+			}
 		}
-		stacks->back = section_border - 1;
+		i++;
 	}
 	return (0);
 }
