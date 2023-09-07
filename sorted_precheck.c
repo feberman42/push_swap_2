@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 11:32:08 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/06 10:54:23 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:44:01 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,6 @@ void	sorted_precheck(t_stacks *stacks)
 		stacks->back = stacks->arr[0];
 	else
 		stacks->front = 1;
+	stacks->section_size = get_section_size(stacks);
+	stacks->center = ((stacks->back - stacks->front) / 2) + stacks->front;
 }
