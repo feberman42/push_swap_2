@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:32:19 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/07 10:00:39 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:53:05 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_stacks
 	int		*arr;
 	int		front;
 	int		back;
+	int		section_size;
+	int		center;
 }	t_stacks;
 
 t_node			*create_node(int value);
@@ -66,12 +68,15 @@ void			rotate_to(t_stacks *stacks, t_stack stack, int value);
 int				last_sorted_front(t_stacks *stacks);
 int				last_sorted_back(t_stacks *stacks);
 void			sorted_precheck(t_stacks *stacks);
+int				get_section_size(t_stacks *stacks);
+int				index_to_push(t_stacks *stacks, int index, int i);
+void			evaluate_index(int index, t_stacks *stacks, int i);
 long int		*search_beam(t_stacks *stacks, t_stack stack);
 void			process_beam(long int *beam, t_stacks *stacks, t_stack stack);
 int				find_insertion_point(t_stacks *stacks);
 void			final_push(t_stacks *stacks);
 int				presort(t_stacks *stacks);
-int				sort(t_stacks *stacks, int back);
+int				sort(t_stacks *stacks);
 void			*free_split(char **split, int size);
 void			free_list(t_node **node);
 void			free_stacks(t_stacks *stacks);
