@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:32:19 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/06 12:22:33 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/07 10:00:39 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
+# include <limits.h>
 # include <stdio.h>// attention
 
 # define BEAM_SIZE 10
@@ -57,7 +58,7 @@ int				search_in_stack(t_node **stack, int value);
 long int		*convert_to_bi(long int *bin, int nb);
 int				move_cost(t_node *stack, t_node *find, long int *ignore);
 long int		*get_beam(long int *beam, int i, int front, int back);
-unsigned int	beam_cost(long int *beam, t_stacks *stacks, t_stack stack);
+int				beam_cost(long int *beam, t_stacks *stacks, t_stack stack);
 long int		*ref_to_beam(long int *beam, int back, int front);
 int				in_beam(long int nb, long int *beam);
 long int		*create_ignore(void);

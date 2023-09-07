@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:12:45 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/06 10:36:46 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/07 09:59:47 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ long int	*search_beam(t_stacks *stacks, t_stack stack)
 {
 	long int		*beam;
 	int				i;
-	unsigned int	cost;
+	int				cost;
 	int				best;
 
 	beam = malloc(sizeof(long int) * BEAM_SIZE);
 	if (!beam)
 		return (0);
-	cost = 0 - 1;
+	cost = INT_MAX;
 	i = 0;
 	while (i < my_pow(2, BEAM_SIZE))
 	{
@@ -69,9 +69,9 @@ long int	*ref_to_beam(long int *beam, int back, int front)
 	return (beam);
 }
 
-unsigned int	beam_cost(long int *beam, t_stacks *stacks, t_stack stack)
+int	beam_cost(long int *beam, t_stacks *stacks, t_stack stack)
 {
-	unsigned int	cost;
+	int				cost;
 	int				i;
 	t_node			*start;
 	t_node			*find;
