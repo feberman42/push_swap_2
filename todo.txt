@@ -3,3 +3,6 @@ buffer commands
 idea:
 	don't sort directly
 	divide into x (4) segments on b, then sort back to a
+
+100 = 6
+500 = 16
