@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:32:19 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/07 14:53:05 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/08 09:47:17 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@
 # define BEAM_STOP 1000000000
 
 typedef	enum e_stack {A, B}	t_stack;
+typedef	enum e_ops 
+{
+	PA,
+	PB,
+	RA,
+	RB,
+	RRA,
+	RRB,
+	RR,
+	RRR
+}	t_ops;
 
 typedef struct s_node
 {
@@ -35,6 +46,7 @@ typedef struct s_stacks
 {
 	t_node	**a;
 	t_node	**b;
+	t_node	*operations;
 	int		*arr;
 	int		front;
 	int		back;
