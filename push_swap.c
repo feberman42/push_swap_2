@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:36:32 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/08 10:56:12 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/08 12:52:55 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,14 @@ int	main(int argc, char *argv[])
 	stacks = create_stacks(arr);
 	sort_arr(arr);
 	sorted_precheck(stacks);
-	presort(stacks);
+	if (stacks->back >= stacks->front)
+		presort(stacks);
 	sort(stacks);
 	filter_useless_rotate(stacks);
+	filter_useless_reverse_rotate(stacks);
+	filter_double_rotate(stacks);
+	// ft_printf("test\n");
+	filter_double_reverse_rotate(stacks);
 	print_ops(stacks);
 	// free(arr);
 	// free_stacks(stacks);
@@ -45,6 +50,15 @@ int	presort(t_stacks *stacks)
 		while (1)
 		{
 			value_index = get_index(stacks->arr, (*(stacks->a))->value);
+			if (!index_to_push(stacks, value_index, i))
+			{
+				if (index_to_push(stacks, get_index(stacks->arr, (*(stacks->a))->prev->value), i))
+				{
+					ops_rra(stacks);
+					value_index = get_index(stacks->arr, (*(stacks->a))->value);
+					check = (*(stacks->a))->prev;
+				}
+			}
 			evaluate_index(value_index, stacks, i);
 			if (value_index == get_index(stacks->arr, check->value))
 				break ;
