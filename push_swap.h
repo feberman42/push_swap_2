@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:32:19 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/08 10:53:23 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:00:49 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ void 			put_ops_out(t_ops ops);
 void			print_ops(t_stacks *stacks);
 void			remove_ops(t_stacks *stacks, t_node *ops);
 void			filter_useless_rotate(t_stacks *stacks);
+void			filter_useless_reverse_rotate(t_stacks *stacks);
+void 			filter_double_rotate(t_stacks *stacks);
+void 			filter_double_reverse_rotate(t_stacks *stacks);
 
 t_stacks		*create_stacks(int *arr);
 int				arr_to_stack(t_stacks *stacks, int *arr);
@@ -86,7 +89,7 @@ void			rotate_to(t_stacks *stacks, t_stack stack, int value);
 int				last_sorted_front(t_stacks *stacks);
 int				last_sorted_back(t_stacks *stacks);
 void			sorted_precheck(t_stacks *stacks);
-int				get_section_size(t_stacks *stacks);
+void				set_section_size(t_stacks *stacks);
 int				index_to_push(t_stacks *stacks, int index, int i);
 void			evaluate_index(int index, t_stacks *stacks, int i);
 long int		*search_beam(t_stacks *stacks, t_stack stack);
