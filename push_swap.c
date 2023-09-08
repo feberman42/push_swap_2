@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:36:32 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/07 14:53:28 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/08 10:56:12 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(int argc, char *argv[])
 	sorted_precheck(stacks);
 	presort(stacks);
 	sort(stacks);
-	// 	error_int();
+	filter_useless_rotate(stacks);
+	print_ops(stacks);
 	// free(arr);
 	// free_stacks(stacks);
 	return (0);

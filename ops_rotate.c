@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 18:44:50 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/06 12:31:38 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/08 10:54:48 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 void	ops_ra(t_stacks *stacks)
 {
 	*(stacks->a) = (*(stacks->a))->next;
-	write(1, "ra\n", 3); 
+	append_ops(stacks, RA);
 }
 
 void	ops_rb(t_stacks *stacks)
 {
 	*(stacks->b) = (*(stacks->b))->next;
-	write(1, "rb\n", 3); 
+	append_ops(stacks, RB);
 }
 
 void	ops_rra(t_stacks *stacks)
 {
 	*(stacks->a) = (*(stacks->a))->prev;
-	write(1, "rra\n", 4); 
+	append_ops(stacks, RRA);
 }
 
 void	ops_rrb(t_stacks *stacks)
 {
 	*(stacks->b) = (*(stacks->b))->prev;
-	write(1, "rrb\n", 4); 
+	append_ops(stacks, RRB);
 }
 
 void	rotate_to(t_stacks *stacks, t_stack stack, int value)

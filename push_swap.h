@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:32:19 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/08 09:47:17 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/08 10:53:23 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,12 @@ void			ops_ra(t_stacks *stacks);
 void			ops_rb(t_stacks *stacks);
 void			ops_rra(t_stacks *stacks);
 void			ops_rrb(t_stacks *stacks);
+
+int				append_ops(t_stacks *stacks, t_ops ops);
+void 			put_ops_out(t_ops ops);
+void			print_ops(t_stacks *stacks);
+void			remove_ops(t_stacks *stacks, t_node *ops);
+void			filter_useless_rotate(t_stacks *stacks);
 
 t_stacks		*create_stacks(int *arr);
 int				arr_to_stack(t_stacks *stacks, int *arr);

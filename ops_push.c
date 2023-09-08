@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 18:04:34 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/04 10:03:18 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/08 10:54:12 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ops_pa(t_stacks *stacks)
 		trv->prev->next = trv;
 	}
 	*(stacks->a) = trv;
-	write(1, "pa\n", 3);
+	append_ops(stacks, PA);
 }
 
 void	ops_pb(t_stacks *stacks)
@@ -61,7 +61,7 @@ void	ops_pb(t_stacks *stacks)
 		trv->prev->next = trv;
 	}
 	*(stacks->b) = trv;
-	write(1, "pb\n", 3);
+	append_ops(stacks, PB);
 }
 
 void	final_push(t_stacks *stacks)
