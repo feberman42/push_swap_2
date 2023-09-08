@@ -6,22 +6,21 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 14:37:44 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/07 14:54:10 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:01:05 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_section_size(t_stacks *stacks)
+void	set_section_size(t_stacks *stacks)
 {
-	int	section_size;
-	int	center;
-
-	section_size = (((stacks->back - stacks->front) + 1) / ((stacks->arr[0] / 40) + 4)) + 1;
-	center = ((stacks->back - stacks->front) / 2) + stacks->front;
-	if ((center - stacks->front) <= 3)
-		section_size = 100;
-	return (section_size);
+	stacks->section_size = (((stacks->back - stacks->front) + 1) / ((stacks->arr[0] / 40) + 4)) + 1;
+	stacks->center = ((stacks->back - stacks->front) / 2) + stacks->front;
+	if ((stacks->back - stacks->front) <= 10)
+	{
+		stacks->section_size = 100;
+		stacks->center = stacks->back;
+	}
 }
 
 int	index_to_push(t_stacks *stacks, int index, int i)
