@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 14:37:44 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/08 13:01:05 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:42:40 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,23 @@ int	index_to_push(t_stacks *stacks, int index, int i)
 	return (0);
 }
 
-void	evaluate_index(int index, t_stacks *stacks, int i)
+int	evaluate_index(int index, t_stacks *stacks, int i)
 {
 	if (index_to_push(stacks, index, i) > 0)
-		ops_pb(stacks);
+	{
+		ops_pb(stacks, 1);
+		return (1);
+	}
 	else if (index_to_push(stacks, index, i) < 0)
 	{
-		ops_pb(stacks);
+		ops_pb(stacks, 1);
 		if ((*(stacks->b))->next != *(stacks->b))
-			ops_rb(stacks);
+			ops_rb(stacks, 1);
+		return (1);
 	}
 	else
-		ops_ra(stacks);
+	{
+		ops_ra(stacks, 1);
+		return (0);
+	}
 }
