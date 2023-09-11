@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:26:44 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/08 12:52:14 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/11 11:58:09 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void put_ops_out(t_ops ops)
 		ft_putendl_fd("pa", 1);
 	else if (ops == PB)
 		ft_putendl_fd("pb", 1);
+	else if (ops == SA)
+		ft_putendl_fd("sa", 1);
 }
 
 void	filter_useless_rotate(t_stacks *stacks)
@@ -98,9 +100,10 @@ void	filter_useless_rotate(t_stacks *stacks)
 				if (check->value == trv->value + 2)
 				{
 					remove_ops(stacks, check);
-					check = trv->next;
-					remove_ops(stacks, trv);
-					trv = check;
+					check = trv;
+					trv = trv->prev;
+					remove_ops(stacks, check);
+					break ;
 				}
 				else if (check->value == PA || check->value == PB)
 					break ;
@@ -127,9 +130,10 @@ void	filter_useless_reverse_rotate(t_stacks *stacks)
 				if (check->value == trv->value - 2)
 				{
 					remove_ops(stacks, check);
-					check = trv->next;
-					remove_ops(stacks, trv);
-					trv = check;
+					check = trv;
+					trv = trv->prev;
+					remove_ops(stacks, check);
+					break ;
 				}
 				else if (check->value == PA || check->value == PB)
 					break ;
