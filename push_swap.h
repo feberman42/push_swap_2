@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:32:19 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/08 13:00:49 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:35:27 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef	enum e_ops
 	RRA,
 	RRB,
 	RR,
-	RRR
+	RRR,
+	SA
 }	t_ops;
 
 typedef struct s_node
@@ -58,12 +59,13 @@ t_node			*create_node(int value);
 void			list_add(t_node **list, t_node *node);
 void			list_print(t_node **list);
 
-void			ops_pa(t_stacks *stacks);
-void			ops_pb(t_stacks *stacks);
-void			ops_ra(t_stacks *stacks);
-void			ops_rb(t_stacks *stacks);
-void			ops_rra(t_stacks *stacks);
-void			ops_rrb(t_stacks *stacks);
+void			ops_pa(t_stacks *stacks, int mode);
+void			ops_pb(t_stacks *stacks, int mode);
+void			ops_ra(t_stacks *stacks, int mode);
+void			ops_rb(t_stacks *stacks, int mode);
+void			ops_rra(t_stacks *stacks, int mode);
+void			ops_rrb(t_stacks *stacks, int mode);
+void			ops_sa(t_stacks *stacks);
 
 int				append_ops(t_stacks *stacks, t_ops ops);
 void 			put_ops_out(t_ops ops);
@@ -89,9 +91,10 @@ void			rotate_to(t_stacks *stacks, t_stack stack, int value);
 int				last_sorted_front(t_stacks *stacks);
 int				last_sorted_back(t_stacks *stacks);
 void			sorted_precheck(t_stacks *stacks);
-void				set_section_size(t_stacks *stacks);
+void			precheck(t_stacks *stacks);
+void			set_section_size(t_stacks *stacks);
 int				index_to_push(t_stacks *stacks, int index, int i);
-void			evaluate_index(int index, t_stacks *stacks, int i);
+int				evaluate_index(int index, t_stacks *stacks, int i);
 long int		*search_beam(t_stacks *stacks, t_stack stack);
 void			process_beam(long int *beam, t_stacks *stacks, t_stack stack);
 int				find_insertion_point(t_stacks *stacks);
@@ -111,6 +114,7 @@ int				has_doubles(int *arr);
 char			**ps_split(const char *s);
 int				check_arg(char *arg);
 int				my_pow(int base, int exp);
+int				ft_abs(int value);
 
 int				count_arguments(int argc, char *argv[]);
 int				count_words(const char *s);
