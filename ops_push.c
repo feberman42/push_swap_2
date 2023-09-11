@@ -6,13 +6,13 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 18:04:34 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/08 10:54:12 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:36:02 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ops_pa(t_stacks *stacks)
+void	ops_pa(t_stacks *stacks, int mode)
 {
 	t_node	*trv;
 
@@ -35,10 +35,11 @@ void	ops_pa(t_stacks *stacks)
 		trv->prev->next = trv;
 	}
 	*(stacks->a) = trv;
-	append_ops(stacks, PA);
+	if (mode)
+		append_ops(stacks, PA);
 }
 
-void	ops_pb(t_stacks *stacks)
+void	ops_pb(t_stacks *stacks, int mode)
 {
 	t_node	*trv;
 
@@ -61,7 +62,8 @@ void	ops_pb(t_stacks *stacks)
 		trv->prev->next = trv;
 	}
 	*(stacks->b) = trv;
-	append_ops(stacks, PB);
+	if (mode)
+		append_ops(stacks, PB);
 }
 
 void	final_push(t_stacks *stacks)
@@ -69,7 +71,7 @@ void	final_push(t_stacks *stacks)
 	if (*(stacks->b) == 0)
 		return ;
 	while ((*(stacks->b))->value < (*(stacks->b))->prev->value)
-		ops_rrb(stacks);
+		ops_rrb(stacks, 1);
 	while (*(stacks->b))
-		ops_pa(stacks);
+		ops_pa(stacks, 1);
 }
