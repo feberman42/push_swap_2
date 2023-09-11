@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 17:52:56 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/04 10:02:59 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/11 10:34:05 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,11 @@ long int	*convert_to_bi(long int *bin, int nb)
 		div /= 2;
 	}
 	return (bin);
+}
+
+int	ft_abs(int value)
+{
+	if (value < 0)
+		value *= -1;
+	return (value);
 }
