@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 10:33:20 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/08 12:08:37 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/12 13:43:24 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,34 +55,6 @@ int	arr_to_stack(t_stacks *stacks, int *arr)
 		i--;
 	}
 	return (1);
-}
-
-int	move_cost(t_node *stack, t_node *find, long int *ignore)
-{
-	t_node	*trv;
-	int		r;
-	int		rr;
-
-	trv = stack;
-	r = 0;
-	while (trv != find)
-	{
-		if (!in_beam(find->value, ignore))
-			r++;
-		trv = trv->next;
-	}
-	trv = stack;
-	rr = 0;
-	while (trv != find)
-	{
-		if (!in_beam(find->value, ignore))
-			rr++;
-		trv = trv->prev;
-	}
-	if (r <= rr)
-		return (r);
-	else
-		return (rr);
 }
 
 int	search_in_stack(t_node **stack, int value)

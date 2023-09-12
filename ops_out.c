@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:26:44 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/11 11:58:09 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/12 13:57:09 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	print_ops(t_stacks *stacks)
 	}
 }
 
-void put_ops_out(t_ops ops)
+void	put_ops_out(t_ops ops)
 {
 	if (ops == RA)
 		ft_putendl_fd("ra", 1);
@@ -100,10 +100,9 @@ void	filter_useless_rotate(t_stacks *stacks)
 				if (check->value == trv->value + 2)
 				{
 					remove_ops(stacks, check);
-					check = trv;
-					trv = trv->prev;
-					remove_ops(stacks, check);
-					break ;
+					remove_ops(stacks, trv);
+					filter_useless_rotate(stacks);
+					return ;
 				}
 				else if (check->value == PA || check->value == PB)
 					break ;
@@ -130,10 +129,9 @@ void	filter_useless_reverse_rotate(t_stacks *stacks)
 				if (check->value == trv->value - 2)
 				{
 					remove_ops(stacks, check);
-					check = trv;
-					trv = trv->prev;
-					remove_ops(stacks, check);
-					break ;
+					remove_ops(stacks, trv);
+					filter_useless_rotate(stacks);
+					return ;
 				}
 				else if (check->value == PA || check->value == PB)
 					break ;
@@ -144,7 +142,7 @@ void	filter_useless_reverse_rotate(t_stacks *stacks)
 	}
 }
 
-void filter_double_rotate(t_stacks *stacks)
+void	filter_double_rotate(t_stacks *stacks)
 {
 	t_node	*trv;
 	t_node	*check;
@@ -157,7 +155,8 @@ void filter_double_rotate(t_stacks *stacks)
 			check = trv->next;
 			while (check)
 			{
-				if ((check->value == RA || check->value == RB) && (check->value != trv->value))
+				if ((check->value == RA || check->value == RB)
+					&& (check->value != trv->value))
 				{
 					trv->value = RR;
 					remove_ops(stacks, check);
@@ -172,7 +171,7 @@ void filter_double_rotate(t_stacks *stacks)
 	}
 }
 
-void filter_double_reverse_rotate(t_stacks *stacks)
+void	filter_double_reverse_rotate(t_stacks *stacks)
 {
 	t_node	*trv;
 	t_node	*check;
@@ -185,7 +184,8 @@ void filter_double_reverse_rotate(t_stacks *stacks)
 			check = trv->next;
 			while (check)
 			{
-				if ((check->value == RRA || check->value == RRB) && (check->value != trv->value))
+				if ((check->value == RRA || check->value == RRB)
+					&& (check->value != trv->value))
 				{
 					trv->value = RRR;
 					remove_ops(stacks, check);

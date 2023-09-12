@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:32:19 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/11 12:35:27 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/12 13:39:49 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ t_node			*create_node(int value);
 void			list_add(t_node **list, t_node *node);
 void			list_print(t_node **list);
 
-void			ops_pa(t_stacks *stacks, int mode);
-void			ops_pb(t_stacks *stacks, int mode);
-void			ops_ra(t_stacks *stacks, int mode);
-void			ops_rb(t_stacks *stacks, int mode);
-void			ops_rra(t_stacks *stacks, int mode);
-void			ops_rrb(t_stacks *stacks, int mode);
-void			ops_sa(t_stacks *stacks);
+int				ops_pa(t_stacks *stacks, int mode);
+int				ops_pb(t_stacks *stacks, int mode);
+int				ops_ra(t_stacks *stacks, int mode);
+int				ops_rb(t_stacks *stacks, int mode);
+int				ops_rra(t_stacks *stacks, int mode);
+int				ops_rrb(t_stacks *stacks, int mode);
+int				ops_sa(t_stacks *stacks);
 
 int				append_ops(t_stacks *stacks, t_ops ops);
 void 			put_ops_out(t_ops ops);
@@ -87,23 +87,27 @@ int				beam_cost(long int *beam, t_stacks *stacks, t_stack stack);
 long int		*ref_to_beam(long int *beam, int back, int front);
 int				in_beam(long int nb, long int *beam);
 long int		*create_ignore(void);
-void			rotate_to(t_stacks *stacks, t_stack stack, int value);
+int				rotate_to(t_stacks *stacks, t_stack stack, int value);
+void			move(t_stacks *stacks, t_stack stack, int moves);
 int				last_sorted_front(t_stacks *stacks);
 int				last_sorted_back(t_stacks *stacks);
 void			sorted_precheck(t_stacks *stacks);
-void			precheck(t_stacks *stacks);
+int				precheck(t_stacks *stacks);
 void			set_section_size(t_stacks *stacks);
 int				index_to_push(t_stacks *stacks, int index, int i);
 int				evaluate_index(int index, t_stacks *stacks, int i);
+void			look_back(t_stacks *stacks, int *value_index, t_node **check, int i);
 long int		*search_beam(t_stacks *stacks, t_stack stack);
 void			process_beam(long int *beam, t_stacks *stacks, t_stack stack);
 int				find_insertion_point(t_stacks *stacks);
 void			final_push(t_stacks *stacks);
 int				presort(t_stacks *stacks);
 int				sort(t_stacks *stacks);
+int				get_cost(t_stacks *stacks);
 void			*free_split(char **split, int size);
 void			free_list(t_node **node);
-void			free_stacks(t_stacks *stacks);
+int				free_stacks(t_stacks *stacks);
+void			free_ops(t_node *node);
 void			*error_ptr(void);
 int				error_int(void);
 

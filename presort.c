@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 14:37:44 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/11 12:42:40 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:34:54 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	set_section_size(t_stacks *stacks)
 {
-	stacks->section_size = (((stacks->back - stacks->front) + 1) / ((stacks->arr[0] / 40) + 4)) + 1;
+	stacks->section_size = (((stacks->back - stacks->front) + 1) / \
+		((stacks->arr[0] / 40) + 4)) + 1;
 	stacks->center = ((stacks->back - stacks->front) / 2) + stacks->front;
 	if ((stacks->back - stacks->front) <= 10)
 	{
@@ -25,11 +26,27 @@ void	set_section_size(t_stacks *stacks)
 
 int	index_to_push(t_stacks *stacks, int index, int i)
 {
-	if (index <= stacks->center && index >= stacks->center - (i * stacks->section_size) && index >= stacks->front)
+	if (index <= stacks->center && index >= stacks->center - \
+		(i * stacks->section_size) && index >= stacks->front)
 		return (1);
-	if (index > stacks->center && index <= stacks->center + (i * stacks->section_size) && index <= stacks->back)
+	if (index > stacks->center && index <= stacks->center + \
+		(i * stacks->section_size) && index <= stacks->back)
 		return (-1);
 	return (0);
+}
+
+void	look_back(t_stacks *stacks, int *value_index, t_node **check, int i)
+{
+	if (!index_to_push(stacks, *value_index, i))
+	{
+		if (index_to_push(stacks, get_index(stacks->arr, \
+			(*(stacks->a))->prev->value), i))
+		{
+			ops_rra(stacks, 1);
+			*value_index = get_index(stacks->arr, (*(stacks->a))->value);
+			*check = (*(stacks->a))->prev;
+		}
+	}
 }
 
 int	evaluate_index(int index, t_stacks *stacks, int i)

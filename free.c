@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 11:11:54 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/04 10:00:39 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/12 13:14:36 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,26 @@ void	*free_split(char **split, int size)
 	return (0);
 }
 
-void	free_stacks(t_stacks *stacks)
+int	free_stacks(t_stacks *stacks)
 {
 	free_list(stacks->a);
 	free_list(stacks->b);
+	free_ops(stacks->operations);
+	free(stacks->arr);
 	free(stacks);
+	return (0);
+}
+
+void	free_ops(t_node *node)
+{
+	t_node	*tmp;
+
+	while (node)
+	{
+		tmp = node;
+		node = node->next;
+		free(tmp);
+	}
 }
 
 void	free_list(t_node **node)
@@ -50,7 +65,8 @@ void	free_list(t_node **node)
 		return ;
 	if (*node)
 	{
-		(*node)->prev->next = 0;
+		if ((*node)->prev)
+			(*node)->prev->next = 0;
 		while (*node)
 		{
 			tmp = *node;

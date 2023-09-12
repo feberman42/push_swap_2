@@ -6,41 +6,45 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 18:44:50 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/11 12:35:44 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/12 13:25:20 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ops_ra(t_stacks *stacks, int mode)
+int	ops_ra(t_stacks *stacks, int mode)
 {
 	*(stacks->a) = (*(stacks->a))->next;
 	if (mode)
-		append_ops(stacks, RA);
+		return (append_ops(stacks, RA));
+	return (1);
 }
 
-void	ops_rb(t_stacks *stacks, int mode)
+int	ops_rb(t_stacks *stacks, int mode)
 {
 	*(stacks->b) = (*(stacks->b))->next;
 	if (mode)
-		append_ops(stacks, RB);
+		return (append_ops(stacks, RB));
+	return (1);
 }
 
-void	ops_rra(t_stacks *stacks, int mode)
+int	ops_rra(t_stacks *stacks, int mode)
 {
 	*(stacks->a) = (*(stacks->a))->prev;
 	if (mode)
-		append_ops(stacks, RRA);
+		return (append_ops(stacks, RRA));
+	return (1);
 }
 
-void	ops_rrb(t_stacks *stacks, int mode)
+int	ops_rrb(t_stacks *stacks, int mode)
 {
 	*(stacks->b) = (*(stacks->b))->prev;
 	if (mode)
-		append_ops(stacks, RRB);
+		return (append_ops(stacks, RRB));
+	return (1);
 }
 
-void	rotate_to(t_stacks *stacks, t_stack stack, int value)
+int	rotate_to(t_stacks *stacks, t_stack stack, int value)
 {
 	int	moves;
 
@@ -48,7 +52,14 @@ void	rotate_to(t_stacks *stacks, t_stack stack, int value)
 		moves = search_in_stack(stacks->a, value);
 	else
 		moves = search_in_stack(stacks->b, value);
+	move(stacks, stack, moves);
+	return (1);
+}
+
+void	move(t_stacks *stacks, t_stack stack, int moves)
+{
 	if (moves >= 0)
+	{
 		while (moves-- > 0)
 		{
 			if (stack == A)
@@ -56,7 +67,9 @@ void	rotate_to(t_stacks *stacks, t_stack stack, int value)
 			else
 				ops_rb(stacks, 1);
 		}
+	}
 	else
+	{
 		while (moves++ < 0)
 		{
 			if (stack == A)
@@ -64,4 +77,5 @@ void	rotate_to(t_stacks *stacks, t_stack stack, int value)
 			else
 				ops_rrb(stacks, 1);
 		}
+	}
 }

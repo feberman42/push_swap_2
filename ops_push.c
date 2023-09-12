@@ -6,13 +6,13 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 18:04:34 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/11 12:36:02 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/12 10:00:01 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ops_pa(t_stacks *stacks, int mode)
+int	ops_pa(t_stacks *stacks, int mode)
 {
 	t_node	*trv;
 
@@ -36,10 +36,11 @@ void	ops_pa(t_stacks *stacks, int mode)
 	}
 	*(stacks->a) = trv;
 	if (mode)
-		append_ops(stacks, PA);
+		return (append_ops(stacks, PA));
+	return (1);
 }
 
-void	ops_pb(t_stacks *stacks, int mode)
+int	ops_pb(t_stacks *stacks, int mode)
 {
 	t_node	*trv;
 
@@ -63,7 +64,8 @@ void	ops_pb(t_stacks *stacks, int mode)
 	}
 	*(stacks->b) = trv;
 	if (mode)
-		append_ops(stacks, PB);
+		return (append_ops(stacks, PB));
+	return (1);
 }
 
 void	final_push(t_stacks *stacks)
