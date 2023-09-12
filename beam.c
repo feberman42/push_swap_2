@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:12:45 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/07 09:59:47 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/12 09:42:34 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,13 @@ void	process_beam(long int *beam, t_stacks *stacks, t_stack stack)
 		if (beam[i] == BEAM_STOP)
 			return ;
 		rotate_to(stacks, stack, stacks->arr[beam[i]]);
-		ops_pb(stacks);
+		ops_pb(stacks, 1);
 		if (beam[i] == stacks->front)
 			stacks->front++;
 		else
 		{
 			stacks->back--;
-			ops_rb(stacks);
+			ops_rb(stacks, 1);
 		}
 		i++;
 	}
