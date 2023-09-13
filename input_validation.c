@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:37:38 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/13 10:22:09 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 14:01:10 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,13 @@ int	count_arguments(int argc, char *argv[])
 	n = 0;
 	i = 1;
 	while (i < argc)
-		n += count_words(argv[i++]);
+	{
+		if (count_words(argv[i]))
+			n += count_words(argv[i]);
+		else
+			return (-1);
+		i++;
+	}
 	return (n);
 }
 

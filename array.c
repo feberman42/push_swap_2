@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:09:07 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/13 10:20:41 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:54:30 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	*create_array(int argc, char *argv[])
 	int	*arr;
 
 	size = count_arguments(argc, argv);
-	if (size <= 1)
+	if (size < 0)
+		return (error_ptr());
+	else if (size <= 1)
 		return (0);
 	arr = calloc(sizeof(int), size + 1);
 	if (!arr)
