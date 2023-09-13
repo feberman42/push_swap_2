@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:09:07 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/12 13:44:46 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 10:20:41 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,23 +90,6 @@ void	sort_arr(int *arr)
 	}
 }
 
-int	has_doubles(int *arr)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (i <= arr[0])
-	{
-		j = i + 1;
-		while (j <= arr[0])
-			if (arr[i] == arr[j++])
-				return (1);
-		i++;
-	}
-	return (0);
-}
-
 int	get_index(int *arr, int value)
 {
 	int	i;
@@ -115,4 +98,21 @@ int	get_index(int *arr, int value)
 	while (arr[i] != value)
 		i++;
 	return (i);
+}
+
+int	arr_to_stack(t_stacks *stacks, int *arr)
+{
+	int		i;
+	t_node	*new;
+
+	i = arr[0];
+	while (i > 0)
+	{
+		new = create_node(arr[i]);
+		if (!new)
+			return (0);
+		list_add(stacks->a, new);
+		i--;
+	}
+	return (1);
 }

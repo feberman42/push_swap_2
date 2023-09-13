@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:32:19 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/12 13:39:49 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 10:16:14 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define BEAM_SIZE 10
 # define BEAM_STOP 1000000000
 
-typedef	enum e_stack {A, B}	t_stack;
-typedef	enum e_ops 
+typedef enum e_stack {A, B}	t_stack;
+typedef enum e_ops 
 {
 	PA,
 	PB,
@@ -57,7 +57,6 @@ typedef struct s_stacks
 
 t_node			*create_node(int value);
 void			list_add(t_node **list, t_node *node);
-void			list_print(t_node **list);
 
 int				ops_pa(t_stacks *stacks, int mode);
 int				ops_pb(t_stacks *stacks, int mode);
@@ -68,25 +67,20 @@ int				ops_rrb(t_stacks *stacks, int mode);
 int				ops_sa(t_stacks *stacks);
 
 int				append_ops(t_stacks *stacks, t_ops ops);
-void 			put_ops_out(t_ops ops);
+void			put_ops_out(t_ops ops);
 void			print_ops(t_stacks *stacks);
 void			remove_ops(t_stacks *stacks, t_node *ops);
+
+void			filter(t_stacks *stacks);
 void			filter_useless_rotate(t_stacks *stacks);
 void			filter_useless_reverse_rotate(t_stacks *stacks);
-void 			filter_double_rotate(t_stacks *stacks);
-void 			filter_double_reverse_rotate(t_stacks *stacks);
+void			filter_double_rotate(t_stacks *stacks);
+void			filter_double_reverse_rotate(t_stacks *stacks);
 
 t_stacks		*create_stacks(int *arr);
 int				arr_to_stack(t_stacks *stacks, int *arr);
 int				get_index(int *arr, int value);
 int				search_in_stack(t_node **stack, int value);
-long int		*convert_to_bi(long int *bin, int nb);
-int				move_cost(t_node *stack, t_node *find, long int *ignore);
-long int		*get_beam(long int *beam, int i, int front, int back);
-int				beam_cost(long int *beam, t_stacks *stacks, t_stack stack);
-long int		*ref_to_beam(long int *beam, int back, int front);
-int				in_beam(long int nb, long int *beam);
-long int		*create_ignore(void);
 int				rotate_to(t_stacks *stacks, t_stack stack, int value);
 void			move(t_stacks *stacks, t_stack stack, int moves);
 int				last_sorted_front(t_stacks *stacks);
@@ -96,9 +90,8 @@ int				precheck(t_stacks *stacks);
 void			set_section_size(t_stacks *stacks);
 int				index_to_push(t_stacks *stacks, int index, int i);
 int				evaluate_index(int index, t_stacks *stacks, int i);
-void			look_back(t_stacks *stacks, int *value_index, t_node **check, int i);
-long int		*search_beam(t_stacks *stacks, t_stack stack);
-void			process_beam(long int *beam, t_stacks *stacks, t_stack stack);
+void			look_back(\
+					t_stacks *stacks, int *value_index, t_node **check, int i);
 int				find_insertion_point(t_stacks *stacks);
 void			final_push(t_stacks *stacks);
 int				presort(t_stacks *stacks);
@@ -117,14 +110,11 @@ void			sort_arr(int *arr);
 int				has_doubles(int *arr);
 char			**ps_split(const char *s);
 int				check_arg(char *arg);
-int				my_pow(int base, int exp);
 int				ft_abs(int value);
 
 int				count_arguments(int argc, char *argv[]);
 int				count_words(const char *s);
 int				wordlen(const char *s);
 int				split_string(char **split, const char *s, int wc);
-
-void			print_beam(long int *beam);
 
 #endif

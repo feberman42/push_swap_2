@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:53:51 by feberman          #+#    #+#             */
-/*   Updated: 2023/08/25 18:06:22 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 09:56:00 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,4 @@ void	list_add(t_node **list, t_node *node)
 		node->prev = node;
 	}
 	*list = node;
-}
-
-void	list_print(t_node **list)
-{
-	t_node	*trv;
-
-	trv = *list;
-	if (!trv)
-		return ;
-	while (1)
-	{
-		ft_printf("%i\n", trv->value);
-		trv = trv->next;
-		if (trv == *list)
-			break ;
-	}
 }

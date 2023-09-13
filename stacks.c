@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 10:33:20 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/12 13:43:24 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 10:21:11 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,15 @@ t_stacks	*create_stacks(int *arr)
 	return (stacks);
 }
 
-int	arr_to_stack(t_stacks *stacks, int *arr)
+int	get_cost(t_stacks *stacks)
 {
-	int		i;
-	t_node	*new;
-
-	i = arr[0];
-	while (i > 0)
+	if (stacks->back - 1 >= stacks->front + 5)
 	{
-		new = create_node(arr[i]);
-		if (!new)
-			return (0);
-		list_add(stacks->a, new);
-		i--;
+		return (ft_abs(search_in_stack(\
+			stacks->b, stacks->arr[stacks->back - 1])));
 	}
-	return (1);
+	else
+		return (INT_MAX);
 }
 
 int	search_in_stack(t_node **stack, int value)
@@ -106,4 +100,28 @@ int	find_insertion_point(t_stacks *stacks)
 			i = 1;
 	}
 	return (trv->value);
+}
+
+void	move(t_stacks *stacks, t_stack stack, int moves)
+{
+	if (moves >= 0)
+	{
+		while (moves-- > 0)
+		{
+			if (stack == A)
+				ops_ra(stacks, 1);
+			else
+				ops_rb(stacks, 1);
+		}
+	}
+	else
+	{
+		while (moves++ < 0)
+		{
+			if (stack == A)
+				ops_rra(stacks, 1);
+			else
+				ops_rrb(stacks, 1);
+		}
+	}
 }

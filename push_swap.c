@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:36:32 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/12 13:39:58 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 10:21:21 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ int	main(int argc, char *argv[])
 	if (stacks->back >= stacks->front)
 		presort(stacks);
 	sort(stacks);
-	filter_useless_rotate(stacks);
-	filter_useless_reverse_rotate(stacks);
-	filter_double_rotate(stacks);
-	filter_double_reverse_rotate(stacks);
+	filter(stacks);
 	print_ops(stacks);
 	free_stacks(stacks);
 	return (0);
@@ -94,15 +91,4 @@ int	sort(t_stacks *stacks)
 	}
 	rotate_to(stacks, A, stacks->arr[1]);
 	return (1);
-}
-
-int	get_cost(t_stacks *stacks)
-{
-	if (stacks->back - 1 >= stacks->front + 5)
-	{
-		return (ft_abs(search_in_stack(\
-			stacks->b, stacks->arr[stacks->back - 1])));
-	}
-	else
-		return (INT_MAX);
 }
