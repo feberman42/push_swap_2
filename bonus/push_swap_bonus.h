@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:32:19 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/13 10:56:49 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:20:33 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <limits.h>
 
 typedef enum e_stack {A, B}	t_stack;
@@ -57,8 +57,12 @@ void			ops_ra(t_stacks *stacks);
 void			ops_rb(t_stacks *stacks);
 void			ops_rra(t_stacks *stacks);
 void			ops_rrb(t_stacks *stacks);
+void			ops_rr(t_stacks *stacks);
+void			ops_rrr(t_stacks *stacks);
 void			ops_sa(t_stacks *stacks);
 void			ops_sb(t_stacks *stacks);
+void			ops_ss(t_stacks *stacks);
+void			do_operation(char *ops, t_stacks *stacks);
 
 int				append_ops(t_stacks *stacks, t_ops ops);
 void			put_ops_out(t_ops ops);
@@ -108,10 +112,8 @@ void			filter_double_reverse_rotate(t_stacks *stacks);
 
 void			*free_split(char **split, int size);
 void			free_list(t_node **node);
-int				free_stacks(t_stacks *stacks);
-void			free_ops(t_node *node);
+void				free_bonus(t_stacks *stacks);
 
-void			*error_ptr(void);
-int				error_int(void);
+void			error(t_stacks *stacks);
 
 #endif
