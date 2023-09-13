@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:36:32 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/13 16:34:44 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 17:18:47 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ int	main(int argc, char *argv[])
 		return (1);
 	stacks = create_stacks_bonus(arr);
 	sort_arr(arr);
-	while(1)
+	ops = get_next_line(0);
+	while(ops)
 	{
-		ops = get_next_line(0);
-		if (!ops)
-			break ;
 		do_operation(ops, stacks);
 		free(ops);
+		ops = get_next_line(0);
 	}
 	if (check(stacks))
 		ft_putendl_fd("OK", 1);
