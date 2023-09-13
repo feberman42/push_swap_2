@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 10:33:20 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/13 10:21:11 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:24:01 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,6 @@ t_stacks	*create_stacks(int *arr)
 	stacks->back = stacks->arr[0];
 	stacks->operations = 0;
 	return (stacks);
-}
-
-int	get_cost(t_stacks *stacks)
-{
-	if (stacks->back - 1 >= stacks->front + 5)
-	{
-		return (ft_abs(search_in_stack(\
-			stacks->b, stacks->arr[stacks->back - 1])));
-	}
-	else
-		return (INT_MAX);
 }
 
 int	search_in_stack(t_node **stack, int value)
