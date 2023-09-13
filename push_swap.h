@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:32:19 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/13 10:27:16 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 10:46:20 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 # include <limits.h>
-# include <stdio.h>// attention
-
-# define BEAM_SIZE 10
-# define BEAM_STOP 1000000000
 
 typedef enum e_stack {A, B}	t_stack;
 typedef enum e_ops 
