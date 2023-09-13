@@ -6,17 +6,19 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 18:04:34 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/13 11:03:06 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:47:39 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	ops_pa(t_stacks *stacks)
 {
 	t_node	*trv;
 
 	trv = *(stacks->b);
+	if (!trv)
+		return ;
 	if (trv->next == trv)
 		*(stacks->b) = 0;
 	else
@@ -42,6 +44,8 @@ void	ops_pb(t_stacks *stacks)
 	t_node	*trv;
 
 	trv = *(stacks->a);
+	if (!trv)
+		return ;
 	if (trv->next == trv)
 		*(stacks->a) = 0;
 	else

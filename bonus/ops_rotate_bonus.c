@@ -6,28 +6,32 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 18:44:50 by feberman          #+#    #+#             */
-/*   Updated: 2023/09/13 11:03:07 by feberman         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:45:49 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	ops_ra(t_stacks *stacks)
 {
-	*(stacks->a) = (*(stacks->a))->next;
+	if (*(stacks->a))
+		*(stacks->a) = (*(stacks->a))->next;
 }
 
 void	ops_rb(t_stacks *stacks)
 {
-	*(stacks->b) = (*(stacks->b))->next;
+	if (*(stacks->b))
+		*(stacks->b) = (*(stacks->b))->next;
 }
 
 void	ops_rra(t_stacks *stacks)
 {
-	*(stacks->a) = (*(stacks->a))->prev;
+	if (*(stacks->a))
+		*(stacks->a) = (*(stacks->a))->prev;
 }
 
 void	ops_rrb(t_stacks *stacks)
 {
-	*(stacks->b) = (*(stacks->b))->prev;
+	if (*(stacks->b))
+		*(stacks->b) = (*(stacks->b))->prev;
 }
